@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>建国水产 - 后台管理</title>
+<link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+<div id="app">
+  <!-- Login -->
+  <div class="login-page" id="login-page">
+    <div class="login-box">
+      <div class="login-logo">🐟</div>
+      <h2>建国水产 - 后台管理</h2>
+      <input type="password" id="login-pwd" placeholder="请输入管理密码" autocomplete="current-password">
+      <button id="login-btn">登 录</button>
+      <p class="login-error" id="login-error"></p>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="dashboard" id="dashboard" style="display:none">
+    <header class="admin-header">
+      <h2>建国水产 · 后台管理</h2>
+      <button class="btn-logout" id="logout-btn">退出</button>
+    </header>
+
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-num" id="s-today-orders">0</div><div class="stat-label">今日订单</div></div>
+      <div class="stat-card"><div class="stat-num" id="s-pending">0</div><div class="stat-label">待处理</div></div>
+      <div class="stat-card"><div class="stat-num" id="s-revenue">¥0</div><div class="stat-label">今日金额</div></div>
+      <div class="stat-card"><div class="stat-num" id="s-total">0</div><div class="stat-label">总订单</div></div>
+    </div>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="orders">📋 订单管理</button>
+      <button class="tab" data-tab="products">📦 商品管理</button>
+    </nav>
+
+    <!-- Orders Tab -->
+    <div class="tab-panel" id="panel-orders">
+      <div class="filter-bar">
+        <select id="filter-status">
+          <option value="">全部状态</option>
+          <option value="pending">待处理</option>
+          <option value="confirmed">已确认</option>
+          <option value="delivered">已送达</option>
+          <option value="cancelled">已取消</option>
+        </select>
+        <input type="date" id="filter-date">
+        <button class="btn-refresh" id="refresh-orders">刷新</button>
+      </div>
+      <div class="orders-list" id="orders-list"></div>
+    </div>
+
+    <!-- Products Tab -->
+    <div class="tab-panel" id="panel-products" style="display:none">
+      <div class="prod-form">
+        <h3>添加商品</h3>
+        <div class="prod-form-row">
+          <input type="text" id="p-name" placeholder="商品名称">
+          <input type="number" id="p-price" placeholder="单价" step="0.1" min="0">
+          <input type="text" id="p-unit" placeholder="单位" value="斤">
+        </div>
+        <div class="prod-form-row">
+          <input type="text" id="p-desc" placeholder="描述（选填）">
+          <button class="btn-add-prod" id="add-prod-btn">＋ 添加</button>
+        </div>
+      </div>
+      <div class="products-list" id="admin-products-list"></div>
+    </div>
+  </div>
+
+  <!-- Edit Product Modal -->
+  <div class="modal-mask" id="edit-modal">
+    <div class="edit-modal-box">
+      <div class="edit-modal-header">
+        <span>编辑商品</span>
+        <button class="edit-modal-close" id="edit-close">&times;</button>
+      </div>
+      <div class="edit-modal-body">
+        <div class="edit-form-group">
+          <label>商品名称</label>
+          <input type="text" id="e-name">
+        </div>
+        <div class="edit-form-group">
+          <label>单价</label>
+          <input type="number" id="e-price" step="0.1" min="0">
+        </div>
+        <div class="edit-form-group">
+          <label>单位</label>
+          <input type="text" id="e-unit">
+        </div>
+        <div class="edit-form-group">
+          <label>描述</label>
+          <input type="text" id="e-desc">
+        </div>
+        <div class="edit-form-group">
+          <label>排序（数字越小越靠前）</label>
+          <input type="number" id="e-sort">
+        </div>
+        <div class="edit-form-group">
+          <label>
+            <input type="checkbox" id="e-active" style="width:auto;margin-right:6px">上架
+          </label>
+        </div>
+        <button class="btn-save-edit" id="edit-save">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/js/admin.js"></script>
+</body>
+</html>

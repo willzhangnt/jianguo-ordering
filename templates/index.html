@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>建国水产 - 在线订货</title>
+<link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+<div id="app">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">🐟</div>
+      <div class="header-text">
+        <h1>建国水产</h1>
+        <p>新鲜到货 · 欢迎订货</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product List -->
+  <main class="main">
+    <div class="section-title">今日供应</div>
+    <div class="product-grid" id="product-grid">
+      <!-- Products rendered by JS -->
+    </div>
+    <div class="empty-msg" id="empty-msg" style="display:none">暂无商品</div>
+  </main>
+
+  <!-- Cart Bar -->
+  <div class="cart-bar" id="cart-bar" style="display:none">
+    <div class="cart-info" id="cart-toggle">
+      <span class="cart-icon">🛒</span>
+      <span class="cart-count" id="cart-count">0</span>
+      <span class="cart-total" id="cart-total">¥0.00</span>
+    </div>
+    <button class="cart-btn" id="submit-btn">去下单</button>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="drawer-mask" id="drawer-mask"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <span>购物车</span>
+      <button class="clear-cart" id="clear-cart">清空</button>
+    </div>
+    <div class="drawer-items" id="drawer-items"></div>
+  </div>
+
+  <!-- Order Form Modal -->
+  <div class="modal-mask" id="order-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <span>确认订单</span>
+        <button class="modal-close" id="order-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="order-summary" id="order-summary"></div>
+        <div class="form-group">
+          <label>您的姓名 <span class="required">*</span></label>
+          <input type="text" id="f-name" placeholder="请输入姓名" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label>联系电话 <span class="required">*</span></label>
+          <input type="tel" id="f-phone" placeholder="请输入手机号" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label>送货地址</label>
+          <input type="text" id="f-address" placeholder="选填，可不填" autocomplete="address">
+        </div>
+        <div class="form-group">
+          <label>备注</label>
+          <textarea id="f-notes" rows="2" placeholder="其他要求..."></textarea>
+        </div>
+        <div class="order-total">
+          合计：<span id="order-total" class="order-total-num">¥0.00</span>
+        </div>
+        <button class="submit-order" id="confirm-order">提交订单</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-mask" id="success-modal">
+    <div class="modal modal-success">
+      <div class="success-icon">✅</div>
+      <h3>订单提交成功！</h3>
+      <p id="success-order-no"></p>
+      <p class="success-msg">我们会尽快联系您确认发货</p>
+      <button class="btn-done" id="success-done">好的</button>
+    </div>
+  </div>
+</div>
+<script src="/static/js/index.js"></script>
+</body>
+</html>
